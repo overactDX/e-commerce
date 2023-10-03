@@ -1,19 +1,34 @@
 "use client";
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 const cardSlice = createSlice({
-    name: "Cart",
-    initialState: [],
-    reducers: {
-        add(state, actions) {
-            state.push(actions.payload)
-        },
-        remove(state, actions) {
-            return state.filter((item) => item.id !== actions.payload);
-        }
-    }
-})
+  name: "Cart",
+  initialState: [],
+  reducers: {
+    add(state, actions) {
+      return [...state, actions.payload];
+    },
+    remove(state, actions) {
+      return state.filter((item) => item.id !== actions.payload);
+    },
+    incrementQuantity(state, actions) {
+      const { id } = actions.payload;
+      const item = state.find((item) => item.id === id);
+      if (item) {
+        item.quantity += 1;
+      }
+    },
 
+    decrementQuantity(state, actions) {
+      const { id } = actions.payload;
+      const item = state.find((item) => item.id === id);
+      if (item && item.quantity > 1) {
+        item.quantity -= 1;
+      }
+    },
+  },
+});
 
-export const {add ,remove} = cardSlice.actions;
+export const { add, remove, incrementQuantity, decrementQuantity } =
+  cardSlice.actions;
 export default cardSlice.reducer;
