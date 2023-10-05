@@ -8,7 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 
-const cartPages = () => {
+const CartPages = () => {
   const dispatch = useDispatch();
   const cartItem = useSelector((state) => state.cart);
   const [allTotal, setAllTotal] = useState(0);
@@ -99,4 +99,4 @@ const cartPages = () => {
   );
 };
 
-export default cartPages;
+export default CartPages;
