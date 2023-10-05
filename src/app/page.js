@@ -34,10 +34,12 @@ const HomePage = () => {
             class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
           >
             <div class="relative pb-48 overflow-hidden p-2">
-              <img
+              <Image
                 class="absolute inset-0 h-full w-full object-contain"
                 src={product.image}
                 alt="img"
+                width={500}
+                height={300}
               />
             </div>
             <div class="p-4">
