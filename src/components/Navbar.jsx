@@ -17,7 +17,7 @@ const Navbar = () => {
         marginBottom:'10px',
       }}
     >
-      <span>Redux Next.js</span>
+      <span>BEN STORE</span>
       <div>
         <Link className="navLink" style={{ fontWeight: "bolder" }} href={"/"}>
           Home

@@ -10,9 +10,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 20px;
-  background: whitesmoke;
+  background: rgb(206, 201, 201);
 }
-
 .truncate-3-lines {
   display: -webkit-box;
   -webkit-line-clamp: 3; /* Limit the number of lines to 3 */
@@ -20,17 +19,12 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-img {
-  height: 80px;
-}
 .card {
   background: white;
   padding: 20px;
   text-align: center;
   border-radius: 10px;
 }
-
 .productsWrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -51,7 +45,6 @@ img {
 .btn:hover {
   background: #513282;
 }
-
 .heading {
   padding: 25px 0;
 }
@@ -65,7 +58,6 @@ img {
   color: black;
   margin-left: 20px;
 }
-
 .cartCard {
   display: flex;
   align-items: center;

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import {
   remove,
+  add,
   incrementQuantity,
   decrementQuantity,
 } from "@/Redux/Cartslice";
@@ -16,9 +17,10 @@ const CartPages = () => {
   const handleRemove = (item) => {
     dispatch(remove(item));
   };
-  // const handleIncrement = (item) => {
-  //   dispatch(incrementQuantity({ item }));
-  // };
+  
+  const handleIncrement = (item) => {
+    dispatch(add({ item }));
+  };
   // const handleDecrement = (item) => {
   //   dispatch(decrementQuantity({ item }));
   // };
@@ -31,12 +33,9 @@ const CartPages = () => {
     for (const item of cartItem) {
       AllTotalPrice += item.price * cartItem.length;
     }
-    return setAllTotal(AllTotalPrice.toFixed(2));
+    return setAllTotal(AllTotalPrice?.toFixed(2));
   };
 
-  const handleIncrement = (itemId) => {
-    console.log(itemId);
-  };
 
   return (
     <div className="cartWrapper">
@@ -84,7 +83,7 @@ const CartPages = () => {
             </button>
           </div>
           <span className="text-center w-1/5 font-semibold text-sm">
-            ${item.price.toFixed(2)}
+            ${item?.price?.toFixed(2)}
           </span>
           <span className="text-center w-1/5 font-semibold text-sm">
             <p>Total Price: {allTotal} THB</p>
