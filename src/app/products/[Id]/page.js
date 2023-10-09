@@ -9,13 +9,13 @@ import StarIcon from "@mui/icons-material/Star";
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const params = useParams();
-  const routerId = params?.Id;
+  let  routerId = params?.Id;
   const dispatch = useDispatch();
 
   const getProductById = async (productId) => {
     try {
-      const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
-      const data = await res.json();
+      let res = await fetch(`https://fakestoreapi.com/products/${productId}`);
+      let data = await res.json();
       setProduct(data);
     } catch (error) {
       console.error("Error fetching product by ID:", error);
