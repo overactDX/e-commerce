@@ -16,14 +16,8 @@ const cardSlice = createSlice({
     },
     decrementQuantity(state, actions) {
       const index = state.indexOf(actions.payload);
-      if (index !== -1) {
-        // สร้างรายการใหม่โดยลบ actions.payload ออกจากรายการเดิม
-        const newState = [...state.slice(0, index), ...state.slice(index + 1)];
-        return newState;
-      }
-      // หากไม่พบ actions.payload ในรายการให้คืนค่ารายการเดิม
-      return state;
-    }
+      return [...state.slice(0, index)];
+    },
   },
 });
 
