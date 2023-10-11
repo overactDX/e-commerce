@@ -43,11 +43,11 @@ const CartPages = () => {
           <div className="flex w-2/5">
             <div className="w-20">
               <Image
-                className="h-24"
-                src={item.image}
+                className="h-20 object-cover"
+                src={item.thumbnail}
                 alt="img"
-                width={100}
-                height={100}
+                width={200}
+                height={200}
               />
             </div>
             <div className="flex flex-col justify-between ml-4 flex-grow">

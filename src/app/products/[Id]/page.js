@@ -1,11 +1,16 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import { addInformation } from "@/Redux/Cartslice";
-import { useDispatch } from "react-redux";
+import {
+  addInformation,
+  incrementQuantity,
+  decrementQuantity,
+} from "@/Redux/Cartslice";
+import { useDispatch, useSelector } from "react-redux";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Image from "next/image";
+import ImageGallery from "@/components/ImgProps";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
@@ -15,14 +20,13 @@ const ProductDetail = () => {
 
   const getProductById = async (productId) => {
     try {
-      const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
+      const res = await fetch(`https://dummyjson.com/products/${productId}`);
       const data = await res.json();
       setProduct(data);
     } catch (error) {
       console.error("Error fetching product by ID:", error);
     }
   };
-
   const handleAdd = (product) => {
     dispatch(addInformation(product));
   };
@@ -32,6 +36,14 @@ const ProductDetail = () => {
     }
   }, [routerId]);
 
+  const handleIncrement = (item) => {
+    dispatch(incrementQuantity(item));
+  };
+
+  const handleDecrement = (item) => {
+    dispatch(decrementQuantity(item));
+  };
+
   return (
     <div>
       {product ? (
@@ -40,17 +52,7 @@ const ProductDetail = () => {
             <div className="max-w-6xl px-4 mx-auto">
               <div className="flex flex-wrap mb-24 -mx-4">
                 <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
-                  <div className="sticky top-0 overflow-hidden border bg-white">
-                    <div className="relative mb-6 lg:mb-10 lg:h-96">
-                      <Image
-                        className="object-contain w-full lg:h-full"
-                        src={product.image}
-                        alt="Img"
-                        width={300}
-                        height={300}
-                      />
-                    </div>
-                  </div>
+                  <ImageGallery product={product} />
                 </div>
                 <div className="w-full px-4 md:w-1/2">
                   <div className="lg:pl-20">
@@ -65,7 +67,7 @@ const ProductDetail = () => {
                         <ul className="flex mb-4 mr-2 lg:mb-0">
                           <Rating
                             name="text-feedback"
-                            value={product?.rating?.rate || 0}
+                            value={product?.rating || 0}
                             readOnly
                             precision={0.5}
                             emptyIcon={<StarIcon fontSize="inherit" />}
@@ -112,7 +114,10 @@ const ProductDetail = () => {
                       <div className="mb-4 mr-4 lg:mb-0">
                         <div className="w-28">
                           <div className="relative flex flex-row w-full h-10 bg-transparent rounded-lg">
-                            <button className="w-20 h-full text-gray-600 bg-gray-100 border-r rounded-l outline-none cursor-pointer dark:border-gray-700 dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-300">
+                            <button
+                              className="w-20 h-full text-gray-600 bg-gray-100 border-r rounded-l outline-none cursor-pointer dark:border-gray-700 dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-300"
+                              onClick={handleDecrement(product)}
+                            >
                               <span className="m-auto text-2xl font-thin">
                                 -
                               </span>
@@ -121,8 +126,12 @@ const ProductDetail = () => {
                               type="number"
                               className="flex items-center w-full font-semibold text-center text-gray-700 placeholder-gray-700 bg-gray-100 outline-none dark:text-gray-400 dark:placeholder-gray-400 dark:bg-gray-900 focus:outline-none text-md hover:text-black"
                               placeholder="1"
+                              value={product?.length}
                             />
-                            <button className="w-20 h-full text-gray-600 bg-gray-100 border-l rounded-r outline-none cursor-pointer dark:border-gray-700 dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-300">
+                            <button
+                              className="w-20 h-full text-gray-600 bg-gray-100 border-l rounded-r outline-none cursor-pointer dark:border-gray-700 dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-300"
+                              onClick={handleIncrement(product)}
+                            >
                               <span className="m-auto text-2xl font-thin">
                                 +
                               </span>

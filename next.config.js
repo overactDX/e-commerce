@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["fakestoreapi.com"], // Add the domain(s) for your images here
-    // You can also specify other image-related configuration options if needed
+    domains: ["i.dummyjson.com"],
+    // domains: ["fakestoreapi.com"]
   },
 };
 
