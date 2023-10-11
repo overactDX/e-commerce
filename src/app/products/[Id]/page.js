@@ -15,9 +15,9 @@ const ProductDetail = () => {
 
   const getProductById = async (productId) => {
     try {
-      const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
-      const data = await res.json();
-      setProduct(data);
+      const data = await fetch(`https://fakestoreapi.com/products/${productId}`);
+      const details = await data.json();
+      setProduct(details);
     } catch (error) {
       console.error("Error fetching product by ID:", error);
     }
