@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { add } from "@/Redux/Cartslice";
+import { addInformation } from "@/Redux/Cartslice";
 import Image from "next/image";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
@@ -22,7 +22,7 @@ const HomePage = () => {
   };
 
   const handleAdd = (product) => {
-    dispatch(add(product));
+    dispatch(addInformation(product));
   };
 
   useEffect(() => {
