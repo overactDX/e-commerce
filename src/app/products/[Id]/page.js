@@ -9,7 +9,7 @@ import StarIcon from "@mui/icons-material/Star";
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const params = useParams();
-  let  routerId = params?.Id;
+  let routerId = params?.Id;
   const dispatch = useDispatch();
 
   const getProductById = async (productId) => {
@@ -35,11 +35,11 @@ const ProductDetail = () => {
     <div>
       {product ? (
         <div>
-          <section className="py-10 font-poppins ">
+          <section className="py-10">
             <div className="max-w-6xl px-4 mx-auto">
               <div className="flex flex-wrap mb-24 -mx-4">
                 <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
-                  <div className="sticky top-0 overflow-hidden ">
+                  <div className="sticky top-0 overflow-hidden border bg-white">
                     <div className="relative mb-6 lg:mb-10 lg:h-96">
                       <img
                         className="object-contain w-full lg:h-full"
@@ -163,7 +163,9 @@ const ProductDetail = () => {
           </section>
         </div>
       ) : (
-        <p>Loading...</p>
+        <div className="flex justify-center items-center">
+          <div className="custom-loader"></div>
+        </div>
       )}
     </div>
   );

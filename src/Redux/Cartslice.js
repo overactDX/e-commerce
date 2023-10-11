@@ -12,19 +12,18 @@ const cardSlice = createSlice({
       return state.filter((item) => item.id !== actions.payload);
     },
     incrementQuantity(state, actions) {
-      const { id } = actions.payload;
-      // const item = state.find((item) => item.id === id);
-      // if (item) {
-      //   item.length += 1;
-      // }
+      return [...state, actions.payload];
     },
-    // decrementQuantity(state, actions) {
-    //   const { id } = actions.payload;
-    //   const item = state.find((item) => item.id === id);
-    //   if (item && item.quantity > 1) {
-    //     item.length -= 1;
-    //   }
-    // },
+    decrementQuantity(state, actions) {
+      const index = state.indexOf(actions.payload);
+      if (index !== -1) {
+        // สร้างรายการใหม่โดยลบ actions.payload ออกจากรายการเดิม
+        const newState = [...state.slice(0, index), ...state.slice(index + 1)];
+        return newState;
+      }
+      // หากไม่พบ actions.payload ในรายการให้คืนค่ารายการเดิม
+      return state;
+    }
   },
 });
 

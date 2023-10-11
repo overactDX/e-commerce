@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Prvider from "@/Redux/Prvider";
+import Provider from "@/Redux/Prvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Prvider>
+        <Provider>
           <Navbar />
           <div className="p-16">{children}</div>
-        </Prvider>
+        </Provider>
       </body>
     </html>
   );
