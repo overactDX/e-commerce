@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import { add } from "@/Redux/Cartslice";
+import { addInformation } from "@/Redux/Cartslice";
 import { useDispatch } from "react-redux";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
@@ -23,7 +23,7 @@ const ProductDetail = () => {
   };
 
   const handleAdd = (product) => {
-    dispatch(add(product));
+    dispatch(addInformation(product));
   };
   useEffect(() => {
     if (routerId) {

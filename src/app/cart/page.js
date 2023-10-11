@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import {
   remove,
-  add,
   incrementQuantity,
   decrementQuantity,
 } from "@/Redux/Cartslice";

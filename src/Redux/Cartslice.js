@@ -5,7 +5,7 @@ const cardSlice = createSlice({
   name: "Cart",
   initialState: [],
   reducers: {
-    add(state, actions) {
+    addInformation(state, actions) {
       return [...state, actions.payload];
     },
     remove(state, actions) {
@@ -21,6 +21,6 @@ const cardSlice = createSlice({
   },
 });
 
-export const { add, remove, incrementQuantity, decrementQuantity } =
+export const { addInformation, remove, incrementQuantity, decrementQuantity } =
   cardSlice.actions;
 export default cardSlice.reducer;
