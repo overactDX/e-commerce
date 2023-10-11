@@ -5,6 +5,7 @@ import { addInformation } from "@/Redux/Cartslice";
 import { useDispatch } from "react-redux";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
+import Image from "next/image";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
@@ -14,8 +15,8 @@ const ProductDetail = () => {
 
   const getProductById = async (productId) => {
     try {
-      let res = await fetch(`https://fakestoreapi.com/products/${productId}`);
-      let data = await res.json();
+      const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
+      const data = await res.json();
       setProduct(data);
     } catch (error) {
       console.error("Error fetching product by ID:", error);
@@ -41,10 +42,12 @@ const ProductDetail = () => {
                 <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
                   <div className="sticky top-0 overflow-hidden border bg-white">
                     <div className="relative mb-6 lg:mb-10 lg:h-96">
-                      <img
+                      <Image
                         className="object-contain w-full lg:h-full"
                         src={product.image}
                         alt="Img"
+                        width={300}
+                        height={300}
                       />
                     </div>
                   </div>
